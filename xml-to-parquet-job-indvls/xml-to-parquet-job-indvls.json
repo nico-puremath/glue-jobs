@@ -1,0 +1,39 @@
+{
+  "name" : "xml-to-parquet-job-indvls",
+  "jobMode" : "SCRIPT",
+  "description" : "",
+  "role" : "arn:aws:iam::730335423849:role/service-role/AWSGlueServiceRole-xml-to-parquet",
+  "executionProperty" : {
+    "maxConcurrentRuns" : 1
+  },
+  "command" : {
+    "name" : "glueetl",
+    "scriptLocation" : "s3://aws-glue-assets-730335423849-us-west-2/scripts/xml-to-parquet-job-indvls.py",
+    "pythonVersion" : "3"
+  },
+  "defaultArguments" : {
+    "--enable-metrics" : "true",
+    "--spark-event-logs-path" : "s3://aws-glue-assets-730335423849-us-west-2/sparkHistoryLogs/",
+    "--enable-job-insights" : "false",
+    "--enable-observability-metrics" : "true",
+    "--enable-glue-datacatalog" : "true",
+    "--enable-continuous-cloudwatch-log" : "true",
+    "--job-bookmark-option" : "job-bookmark-enable",
+    "--job-language" : "python",
+    "--TempDir" : "s3://aws-glue-assets-730335423849-us-west-2/temporary/"
+  },
+  "maxRetries" : 0,
+  "allocatedCapacity" : 2,
+  "timeout" : 2880,
+  "maxCapacity" : 2.0,
+  "glueVersion" : "4.0",
+  "numberOfWorkers" : 2,
+  "workerType" : "G.1X",
+  "executionClass" : "STANDARD",
+  "sourceControlDetails" : {
+    "provider" : "GITHUB",
+    "repository" : "glue-jobs",
+    "branch" : "main",
+    "folder" : "xml-to-parquet-job-indvls"
+  }
+}
